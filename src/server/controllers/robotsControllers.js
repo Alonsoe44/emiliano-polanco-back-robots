@@ -34,8 +34,34 @@ const createRobot = async (req, res, next) => {
   }
 };
 
+const replaceRobot = async (req, res, next) => {
+  try {
+    const replacingRobot = await Robot.replaceOne(
+      // eslint-disable-next-line no-underscore-dangle
+      { _id: req.body._id },
+      { ...req.body }
+    );
+    res.json(replacingRobot);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const deleteRobot = async (req, res, next) => {
+  try {
+    const robotId = req.params.id;
+    await Robot.findByIdAndDelete(robotId);
+    res.status(200);
+    res.json({});
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getAllRobots,
   getRobot,
   createRobot,
+  replaceRobot,
+  deleteRobot,
 };
