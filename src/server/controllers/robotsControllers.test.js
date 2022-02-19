@@ -8,6 +8,7 @@ describe("Given a getRobot controller", () => {
     test("Then it should call method json with a group of Robots", async () => {
       const res = {
         json: jest.fn(),
+        setHeader: jest.fn(),
       };
       const robots = [
         {
