@@ -3,7 +3,7 @@ const debug = require("debug")("robots-app:root");
 const connectRobotArmyDataBase = require("./database");
 const serverUp = require("./server");
 
-const serverPort = process.env.SERVER_PORT;
+const serverPort = process.env.PORT;
 const loginConectionCredentials = process.env.LOGIN_CREDENTIALS;
 
 (async () => {
