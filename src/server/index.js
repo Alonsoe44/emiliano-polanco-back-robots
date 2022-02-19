@@ -1,4 +1,5 @@
 const debug = require("debug")("robots-app:server");
+const cors = require("cors");
 const express = require("express");
 const morgan = require("morgan");
 const { notFoundError, internalServerError } = require("./middlewares/errors");
@@ -21,6 +22,7 @@ const serverUp = (port) =>
 
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cors);
 app.use("/robots", robotsRouter);
 
 app.use(notFoundError);
