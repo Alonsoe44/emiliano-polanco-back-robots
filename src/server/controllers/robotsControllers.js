@@ -4,6 +4,7 @@ const Robot = require("../../database/models/Robot");
 const getAllRobots = async (req, res) => {
   const robots = await Robot.find();
   debug("The request is in the controller");
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.json({ robots });
 };
 
