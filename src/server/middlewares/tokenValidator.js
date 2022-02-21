@@ -9,6 +9,7 @@ const tokenValidator = async (req, res, next) => {
   } else {
     const token = headerAuth.replace("Bearer ", "");
     try {
+      res.set("Access-Control-Allow-Origin", "*");
       jsonwebtoken.verify(token, process.env.SECRET_HEHE);
       next();
     } catch (error) {
