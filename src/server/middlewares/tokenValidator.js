@@ -3,7 +3,7 @@ const jsonwebtoken = require("jsonwebtoken");
 const tokenValidator = async (req, res, next) => {
   const headerAuth = req.header("Authorization");
   if (!headerAuth) {
-    const error = new Error("Token missing");
+    const error = new Error("The token is missing");
     error.status = 401;
     next(error);
   } else {
