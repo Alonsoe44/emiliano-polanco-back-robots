@@ -21,9 +21,9 @@ const serverUp = (port) =>
     });
   });
 
+app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
-app.use(cors());
 app.use("/robots", robotsRouter);
 app.use("/login", loginRouter);
 
