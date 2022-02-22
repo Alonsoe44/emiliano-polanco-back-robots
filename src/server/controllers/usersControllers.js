@@ -19,7 +19,6 @@ const userController = async (req, res, next) => {
 
     if (passwordValidation) {
       const token = jsonwebtoken.sign(userData, process.env.SECRET_HEHE);
-      res.set("Access-Control-Allow-Origin", "*");
       res.json({ token });
     } else {
       const error = new Error();
