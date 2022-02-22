@@ -1,7 +1,8 @@
 require("dotenv").config();
 const debug = require("debug")("robots-app:root");
 const connectRobotArmyDataBase = require("./database");
-const serverUp = require("./server");
+const app = require("./server");
+const startServer = require("./server/startServer");
 
 const serverPort = process.env.PORT;
 const loginConectionCredentials = process.env.LOGIN_CREDENTIALS;
@@ -9,7 +10,7 @@ const loginConectionCredentials = process.env.LOGIN_CREDENTIALS;
 (async () => {
   try {
     await connectRobotArmyDataBase(loginConectionCredentials);
-    await serverUp(serverPort);
+    await startServer(app, serverPort);
   } catch (error) {
     debug(`The server it's broken`);
   }
